@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import java.util.List;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -14,8 +15,9 @@ public class Book {
 	private Long id;
 	private Long published;
 	private String title;
+	
 	@Relationship(type = "APPEARS_IN", direction = Relationship.INCOMING)
-	private Set characters;
+	private List<Person> characters;
 
 	public Long getId() {
 		return id;
@@ -29,7 +31,7 @@ public class Book {
 		return title;
 	}
 
-	public Set getCharacters() {
+	public List<Person> getCharacters() {
 		return characters;
 	}
 
@@ -45,7 +47,7 @@ public class Book {
 		this.title = title;
 	}
 
-	public void setCharacters(Set characters) {
+	public void setCharacters(List<Person> characters) {
 		this.characters = characters;
 	}
 }
